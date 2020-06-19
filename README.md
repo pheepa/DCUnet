@@ -1,7 +1,7 @@
 # [Jupyter Notebook](https://github.com/pheepa/DCUnet/blob/master/dcunet.ipynb) #
 
 # Phase-aware speech enchancement with Deep Complex U-Net #
-Для изучениял статью ["Phase-aware speech enchancement with Deep Complex U-Net"](https://openreview.net/pdf?id=SkeRTsAcYm), в которой описывается архитектура и обучние сверточной нейронной сети для улучшения речи, так называемого денойзинга, и поставил эксперимент. 
+Для изучения я выбрал статью ["Phase-aware speech enchancement with Deep Complex U-Net"](https://openreview.net/pdf?id=SkeRTsAcYm), в которой описывается архитектура и обучние сверточной нейронной сети для улучшения речи, так называемого денойзинга, и поставил эксперимент. 
 ![architecture](img/dcunet.png)
 
 ## Задача ##
