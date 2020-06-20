@@ -1,38 +1,38 @@
 # [Jupyter Notebook](https://github.com/pheepa/DCUnet/blob/master/dcunet.ipynb) #
 
 # Phase-aware speech enchancement with Deep Complex U-Net #
-Для изучения я выбрал статью ["Phase-aware speech enchancement with Deep Complex U-Net"](https://openreview.net/pdf?id=SkeRTsAcYm), в которой описывается архитектура и обучние сверточной нейронной сети для улучшения речи, так называемого денойзинга, и поставил эксперимент. 
+For research I chose this article ["Phase-aware speech enchancement with Deep Complex U-Net"](https://openreview.net/pdf?id=SkeRTsAcYm), which describes the architecture and training of a convolutional neural network for improving speech, so-called denoising, and set up an experiment. 
 ![architecture](img/dcunet.png)
 
-## Задача ##
-Оновная задача состоит в разработке комплексной вариации архитектуры известной U-Net сети для устранения шума из аудио.
+## The task ##
+The main task is to develop a complex variation of the architecture of the well known UNet network to eliminate unwanted noise from the audio.
 
-## Особенность метода ##
-Ее особенность и отличие от остальных сетей, например SegNet, для семантической сегментации(и не только) закоючается в Skip-Connections и в том, что значения как входных данных, так и всех параметров сети(фильтры свертки и тд.) являются комплексными.
+## Method's features ##
+Its speciality and difference from other networks, such as SegNet, for semantic segmentation (not only that) lies in Skip-Connections and that the values of both input data and all of network parameters (convolution filters, etc.) are complex.
 
 ### Skip-Connections ###
-Основная идея заключается в том, что ранние слои Encoder'ов конкатятся с "паралленьными" им слоями Decoder'ов.
+The main idea is that the early layers of the Encoder are concatenated with the " parallel " layers of the Decoder.
 
 ![skip-connection](img/skip-connection.png)
 
-### Маска ###
-В результате слоев свертки мы получаем маску, которую домножаем на входной time-frequency сигнал с шумом и получаем очищенный опять же time-frequency сигнал, который далее проходит обратное оконное преобраование Фурье.
+### Mask ###
+As a result of the convolution layers, we get a mask, which we multiply by the input time-frequency signal with noise and get a cleared time-frequency signal, which then passes the inverse Short-time Fourier transform.
 ![arch](img/arch.png) 
 
 
-### Альтернативные решения ###
+### Alternative solution ###
 * [Improved Speech Enhancement with the Wave-U-Net](https://arxiv.org/abs/1811.11307)
 
-## Эксперимент ##
-Для обучения будем использовать [Noisy speech database for training speech enhancement algorithms and TTS models](https://datashare.is.ed.ac.uk/handle/10283/2791), который содержит набор данных для обучения и тестирования с 28 и 56 спикерами в .wav аудиофайлах 48 КГц. Будет реализована именно 10-слойная архитектура сети, которая выглядит следующим образом:
+## The Experiment ##
+For training we will use [Noisy speech database for training speech enhancement algorithms and TTS models](https://datashare.is.ed.ac.uk/handle/10283/2791), which contains a data set for training and testing with 28 and 56 speakers in .wav audio files are 48 KHz. The 10-layer network architecture will be implemented, which looks like this:
 ![10-layers](img/layers.png)
 
-Будет продемонстрирован график изменения значения функции потерь при обучении и валидации. 
+A graph of changes in the value of the loss function during training and validation will be shown. 
 
-Так же будет расчитана PESQ метрика.
+The PESQ metric will also be calculated.
 
-### Проблемы ###
-Так как я не имею оборудования с достаточным GPU(в наличии ноутбук с 2 Гб и модель не помещается в память, не говоря уже об обучении) мне пришлось рассмотреть альтернативы для обучения:
+### Issues ###
+Due to my lack of equipment with proper GPU (a laptop with 2 GB of GPU, so the model does not fit into the given memory, not to mention training) I had to consider alternatives for training:
 
-* Обучить на Google Colab или другом облачном сервисе.
-Облачные сервиса имеют строгие ограничения по времени сессии, поэтому было принято решение обучить на маленьком количестве эпох. 
+* Training on Google Colab or another cloud service. 
+Cloud services have strict session time limits, so it was decided to train on a small number of epochs. 
