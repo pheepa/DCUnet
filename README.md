@@ -1,6 +1,6 @@
 # [Jupyter Notebook](https://github.com/pheepa/DCUnet/blob/master/dcunet.ipynb) #
 
-# Phase-aware speech enchancement with Deep Complex U-Net #
+# Phase-aware speech enhancement with Deep Complex U-Net #
 For research I chose this article ["Phase-aware speech enchancement with Deep Complex U-Net"](https://openreview.net/pdf?id=SkeRTsAcYm), which describes the architecture and training of a convolutional neural network for improving speech, so-called denoising, and set up an experiment. 
 ![architecture](img/dcunet.png)
 
